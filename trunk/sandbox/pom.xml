@@ -1,0 +1,164 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.karora</groupId>
+	<artifactId>cooee-sandbox</artifactId>
+	<name>Cooee-Sandbox</name>
+	<packaging>jar</packaging>
+	<version>1.2.1-SNAPSHOT</version>
+	<description>
+		Sandbox of components for the Cooee project
+	</description>
+	<url>http://www.karora.org/projects/cooee-sandbox</url>
+
+	<scm>
+		<connection>scm:svn:http://svn.karora.org/repos/cooee/trunk/sandbox</connection>
+		<developerConnection>scm:svn:http://svn.karora.org/repos/cooee/trunk/sandbox</developerConnection>
+	</scm>
+
+	<parent>
+		<groupId>org.karora</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>1.0</version>
+	</parent>
+
+        <!-- Profile for OSGI bundles - not yet used
+        <profiles>
+		<profile>
+			<activation>
+				<property>
+					<name>packageType</name>
+					<value>OSGI</value>
+				</property>
+			</activation>
+                        <build>
+                         <plugins>
+                           <plugin>
+                              <groupId>org.apache.maven.plugins</groupId>
+                              <artifactId>maven-dependency-plugin</artifactId>
+                              <executions>
+                                 <execution>
+                                    <id>copy-dependencies</id>
+                                    <phase>compile</phase>
+                                    <goals>
+                                        <goal>copy-dependencies</goal>
+                                    </goals>
+                                    <configuration>
+                                        <includeScope>compile</includeScope>
+                                        <excludeGroupIds>org.karora,junit,javax.servlet</excludeGroupIds>
+                                        <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                        <overWriteReleases>false</overWriteReleases>
+                                        <overWriteSnapshots>true</overWriteSnapshots>
+                                    </configuration>
+                                </execution>
+                             </executions>
+                          </plugin>
+                    </plugins>
+                </build>
+             </profile>
+        </profiles>
+        -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.0-beta-4</version>
+				<configuration>
+					<tagBase>
+						http://svn.karora.org/repos/cooee/release/sandbox
+					</tagBase>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestFile>
+							META-INF/MANIFEST.MF
+						</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
+
+                        <!-- include specific jars that are required by the sandbox -->
+                           <plugin>
+                              <groupId>org.apache.maven.plugins</groupId>
+                              <artifactId>maven-dependency-plugin</artifactId>
+                              <executions>
+                                 <execution>
+                                    <id>copy-dependencies</id>
+                                    <phase>compile</phase>
+                                    <goals>
+                                        <goal>copy-dependencies</goal>
+                                    </goals>
+                                    <configuration>
+                                        <includeScope>compile</includeScope>
+                                        <excludeGroupIds>org.karora,junit,javax.servlet</excludeGroupIds>
+                                        <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                        <overWriteReleases>false</overWriteReleases>
+                                        <overWriteSnapshots>true</overWriteSnapshots>
+                                    </configuration>
+                                </execution>
+                             </executions>
+                          </plugin>
+
+
+
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.karora</groupId>
+			<artifactId>cooee</artifactId>
+			<scope>provided</scope>
+			<version>1.2-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jcommon</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>ssh-repository</id>
+			<url>file:///var/www/open/maven-repository/</url>
+		</repository>
+		<snapshotRepository>
+			<id>local-snapshots</id>
+			<url>file:///var/www/open/maven-snapshots/</url>
+		</snapshotRepository>
+
+		<site>
+			<id>gbv-core-sites</id>
+			<url>file:///var/www/open/projects/cooee-sandbox/</url>
+		</site>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<snapshots />
+			<id>local-snapshots</id>
+			<url>http://karora.org/maven-snapshots/</url>
+		</repository>
+		<repository>
+			<id>local-releases</id>
+			<url>http://karora.org/maven-repository/</url>
+		</repository>
+	</repositories>
+
+</project>

@@ -1,0 +1,15 @@
+/*
+This is a test style sheet and we see what happens
+*/
+
+org.karora.cooee.app.SelectField#noBaseClass extends itself { 
+    foreground : black;
+}
+
+org.karora.cooee.app.text.TextComponent {
+	background : red;
+}
+
+org.karora.cooee.app.TextField#useInheritance extends itself { 
+    foreground : black;
+}

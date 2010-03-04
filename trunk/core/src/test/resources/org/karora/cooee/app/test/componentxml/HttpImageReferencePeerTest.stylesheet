@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stylesheet>
+ <style name="alpha" type="org.karora.cooee.app.Button">
+  <properties>
+   <property type="org.karora.cooee.app.HttpImageReference" name="icon" 
+           value="file:///Alpha.png"/>
+  </properties>
+ </style>
+ <style name="bravo" type="org.karora.cooee.app.Button">
+  <properties>
+   <property type="org.karora.cooee.app.HttpImageReference" name="icon" >
+    <http-image-reference uri="file:///Bravo.png"/>
+   </property>
+  </properties>
+ </style>
+ <style name="charlie" type="org.karora.cooee.app.Button">
+  <properties>
+   <property type="org.karora.cooee.app.HttpImageReference" name="icon" >
+    <http-image-reference uri="file:///Charlie.png" width="20px" height="30px"/>
+   </property>
+  </properties>
+ </style>
+</stylesheet>

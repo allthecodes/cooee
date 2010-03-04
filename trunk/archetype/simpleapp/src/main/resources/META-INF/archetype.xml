@@ -1,0 +1,21 @@
+<archetype>
+  <id>cooee-application</id>
+  <sources>
+    <source>src/main/java/CooeeServlet.java</source>
+	<source>src/main/java/CooeeApp.java</source>
+	<source>src/main/java/MainWindow.java</source>
+	<source>src/main/java/Resources.java</source>
+	<source>src/main/java/HelloPane.java</source>
+  </sources>
+  <resources>
+    <resource>.project</resource>
+    <resource>.classpath</resource>
+    <resource>WebContent/WEB-INF/web.xml</resource>
+    <resource>src/main/resources/style/Default.stylesheet</resource>
+    <resource>src/main/resources/image/HeaderBackground.png</resource>
+    <resource>src/main/resources/image/ShadowBackgroundDarkBlue.png</resource>
+    <resource>src/main/resources/image/ShadowBackgroundLightBlue.png</resource>
+    <resource>src/main/resources/image/SplitPaneHorizontalSeparator.png</resource>
+  </resources>
+  
+</archetype>
