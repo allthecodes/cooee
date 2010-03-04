@@ -1,0 +1,19 @@
+org.karora.cooee.ng.Tree {
+	foreground : Color {
+		red : 255;
+		green : 255;
+		blue : 255;
+	}
+	
+	background : Color {
+		rgb : 255;
+	}
+}
+
+org.karora.cooee.app.Label {
+	icon : HttpImageReference {
+		uri : '/image/testGif.png';
+		width : 9px;
+		height : 12pt;
+	}
+}

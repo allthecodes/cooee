@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stylesheet>
+ <style name="alpha" type="org.karora.cooee.app.text.TextComponent">
+  <properties>
+   <property name="backgroundImage">
+    <fill-image>
+     <image type="org.karora.cooee.app.ResourceImageReference">
+      <resource-image-reference resource="org/karora/cooee/test/componentxml/BackgroundImage.png"/>
+     </image>
+    </fill-image>
+   </property>
+  </properties>
+ </style>
+ <style name="bravo" type="org.karora.cooee.app.text.TextComponent">
+  <properties>
+   <property name="backgroundImage">
+    <fill-image horizontal="50px" vertical="-30%" repeat="horizontal" attachment="fixed">
+     <image type="org.karora.cooee.app.ResourceImageReference">
+      <resource-image-reference resource="org/karora/cooee/test/componentxml/BackgroundImage.png"/>
+     </image>
+    </fill-image>
+   </property>
+  </properties>
+ </style>
+</stylesheet>

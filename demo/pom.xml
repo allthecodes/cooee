@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>parent-pom</artifactId>
+    <groupId>org.karora</groupId>
+    <version>1.0</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.karora</groupId>
+  <artifactId>cooee-demo</artifactId>
+  <packaging>war</packaging>
+  <name>Cooee-Demo</name>
+  <version>1.0-SNAPSHOT</version>
+  <scm>
+    <connection>scm:svn:http://svn.karora.org/cooee/cooee-core-demo</connection>
+    <developerConnection>scm:svn:http://svn.karora.org/cooee/cooee-core-demo/trunk</developerConnection>
+  </scm>
+ <build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<connectors>
+						<connector
+							implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>8080</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+
+					<webAppSourceDirectory>
+						${basedir}/WebContent
+					</webAppSourceDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<webappDirectory>
+						${basedir}/WebContent
+					</webappDirectory>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+  <repositories>
+    <repository>
+      <snapshots />
+      <id>local-snapshots</id>
+      <url>http://karora.org/maven-snapshots/</url>
+    </repository>
+    <repository>
+      <id>local-releases</id>
+      <url>http://karora.org/maven-repository/</url>
+    </repository>
+  </repositories>
+  <dependencies>
+    <dependency>
+      <groupId>org.karora</groupId>
+      <artifactId>cooee</artifactId>
+      <version>1.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>osgi_R4_core</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>osgi_R4_compendium</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+</project>
+

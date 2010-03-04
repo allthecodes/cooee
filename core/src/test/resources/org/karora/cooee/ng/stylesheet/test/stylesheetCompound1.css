@@ -1,0 +1,15 @@
+org.karora.cooee.ng.TemplatePanel#inst1 {
+	//
+	// our layout data requires a template source
+	templateDataSource : org.karora.cooee.ng.template.JspTemplateDataSource {
+		jspPath : '/jsp/test1.jsp';
+		//
+		// and we can provide caching hints
+		cachingHints : org.karora.cooee.ng.template.SimpleTemplateCachingHints {
+			accessTimeout : 10000;
+			timeToLive    : 20000;
+		}
+	}
+	foreground : red;
+}
+

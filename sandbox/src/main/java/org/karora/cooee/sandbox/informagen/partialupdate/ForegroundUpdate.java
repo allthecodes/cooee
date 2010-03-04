@@ -1,0 +1,78 @@
+
+package org.karora.cooee.sandbox.informagen.partialupdate;
+
+
+// Cooee Framework
+import org.karora.cooee.app.Color;
+import org.karora.cooee.app.Component;
+import org.karora.cooee.app.update.ServerComponentUpdate;
+
+
+// Cooee WebContainer Sub-Framework
+import org.karora.cooee.webcontainer.ContainerInstance;
+import org.karora.cooee.webcontainer.PartialUpdateParticipant;
+import org.karora.cooee.webcontainer.RenderContext;
+
+// Cooee WebRenderer Sub-Framework
+import org.karora.cooee.webrender.ServerMessage;
+import org.karora.cooee.webcontainer.propertyrender.ColorRender;
+
+// W3C DOM
+import org.w3c.dom.Element;
+
+ 
+/**
+ * A <code>PartialUpdateParticipant</code> to update the text any
+ * subclass of 'TextComponent'
+ */
+
+public class ForegroundUpdate implements PartialUpdateParticipant {
+
+    private String messageProcessor;
+
+    public ForegroundUpdate(String messageProcessor) {
+        this.messageProcessor = messageProcessor;
+    }
+
+    /**
+     * @see org.karora.cooee.webcontainer.PartialUpdateParticipant#canRenderProperty(org.karora.cooee.webcontainer.RenderContext, 
+     *      org.karora.cooee.app.update.ServerComponentUpdate)
+     */
+    public boolean canRenderProperty(RenderContext rc, ServerComponentUpdate update) {
+        return true;
+    }
+
+
+    /**
+     * @see org.karora.cooee.webcontainer.PartialUpdateParticipant#renderProperty(
+     *      org.karora.cooee.webcontainer.RenderContext, org.karora.cooee.app.update.ServerComponentUpdate)
+     */
+    public void renderProperty(RenderContext rc, ServerComponentUpdate update) {
+    
+        Component component = (Component) update.getParent();
+        
+        String elementId = ContainerInstance.getElementId(component);
+        ServerMessage serverMessage = rc.getServerMessage();
+        
+        Element itemizedUpdateElement = serverMessage.getItemizedDirective(
+                ServerMessage.GROUP_ID_POSTUPDATE,
+                messageProcessor, 
+                "set-foreground", 
+                new String[0], 
+                new String[0]);
+                
+        Element itemElement = serverMessage.getDocument().createElement("item");
+        itemElement.setAttribute("eid", elementId);
+        
+        Color color = (Color)component.getRenderProperty(Component.PROPERTY_FOREGROUND);
+
+        if(color == null)
+            color = Color.BLACK;
+        
+        itemElement.setAttribute("foreground", ColorRender.renderCssAttributeValue(color));
+        
+        itemizedUpdateElement.appendChild(itemElement);
+        
+    }
+}
+
